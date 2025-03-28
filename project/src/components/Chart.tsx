@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useChartContext } from '../context/ChartContext';
-import { CandleData, DrawingState, Point, DrawingObject } from '../types/chartTypes';
+import { CandleData, DrawingState, Point, DrawingObject, Timeframe } from '../types/chartTypes';
 import { drawChart } from '../utils/chartRenderer';
 import { fetchHistoricalData, subscribeToRealtimeData } from '../services/dataService';
 import ChartControls from './ChartControls';
@@ -41,11 +41,13 @@ const getTimeframeInterval = (timeframe: string): number => {
 interface ChartProps {
   symbol: string;
   onSymbolChange: (symbol: string) => void;
+  timeframe: Timeframe;
+  onTimeframeChange: (timeframe: Timeframe) => void;
   width?: number;
   height: number;
 }
 
-const Chart: React.FC<ChartProps> = ({ symbol, onSymbolChange, height }) => {
+const Chart: React.FC<ChartProps> = ({ symbol, onSymbolChange, timeframe, onTimeframeChange, height }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const overlayCanvasRef = useRef<HTMLCanvasElement>(null);
   const chartAreaRef = useRef<HTMLDivElement>(null);
@@ -113,7 +115,7 @@ const Chart: React.FC<ChartProps> = ({ symbol, onSymbolChange, height }) => {
 
   const { 
     chartType, 
-    timeframe, 
+    timeframe: contextTimeframe, 
     indicators, 
     showOHLC, 
     selectedTool, 

@@ -28,11 +28,11 @@ A high-performance charting library built with HTML5 Canvas, React, and TypeScri
 
 ## Embedding the Chart
 
-You can embed the chart in any website using an iframe. Here's how:
+You can embed the chart in any website using an iframe. Simply point to your deployed chart application:
 
 ```html
 <iframe 
-  src="https://your-domain.com/embed.html?symbol=NASDAQ:AAPL&timeframe=1h&width=800&height=600"
+  src="https://your-domain.com?symbol=NASDAQ:AAPL&timeframe=1h"
   width="800" 
   height="600" 
   style="border: none; border-radius: 8px; background: #141414;"
@@ -44,8 +44,8 @@ You can embed the chart in any website using an iframe. Here's how:
 
 - `symbol` - Trading symbol (e.g., NASDAQ:AAPL, BINANCE:BTCUSDT)
 - `timeframe` - Chart timeframe (1m, 5m, 15m, 1h, 4h, 1d)
-- `width` - Chart width in pixels (default: 800)
-- `height` - Chart height in pixels (default: 600)
+
+The chart will automatically adjust to the iframe's dimensions.
 
 ## Creating New Tools
 
